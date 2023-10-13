@@ -43,6 +43,7 @@ class AppColorsLight {
   static const indicatorColor = Color.fromRGBO(220, 255, 254, 1);
   static const statusBarColor = Color.fromARGB(255, 243, 243, 243);
   static const navigationBarColor = Color.fromARGB(255, 244, 244, 244);
+  static const bgColor = Color.fromRGBO(250, 248, 252, 1);
 
   static const blueColor = Color.fromRGBO(83, 189, 236, 1);
   static const greenColor = Color.fromRGBO(26, 181, 148, 1);
