@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:takhti_app/mainscreens/utils/deleteDialog.dart';
+import 'package:takhti_app/mainscreens/utils/notificSettings.dart';
+import 'package:takhti_app/mainscreens/utils/profileUpdateDialog.dart';
+import 'package:takhti_app/mainscreens/utils/updatePasswordDialog.dart';
 import '../theme/text_theme.dart';
 import '../theme/color_theme.dart';
 
@@ -29,10 +33,10 @@ class _Screen5State extends State<Screen5> {
   @override
   Widget build(BuildContext context) {
     scr = MediaQuery.of(context).size.width;
-    nameController.text = "test";
+    nameController.text = " ";
     nC.text = "user";
-    emailController.text ="test@email.com";
-    passwordController.text = "";
+    emailController.text = "test@email.com";
+    passwordController.text = " ";
     return Scaffold(
       backgroundColor: AppColorsLight.bgColor,
       body: Padding(
@@ -91,6 +95,10 @@ class _Screen5State extends State<Screen5> {
                         )
                     ),
                     onPressed: () {
+                      showProfileupdateDialog(context,nameController, emailController, passwordController);
+                      //refresh the screen
+                      setState(() {
+                      });
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +129,8 @@ class _Screen5State extends State<Screen5> {
                       maximumSize: Size(500, 50),
                     ),
                     onPressed: () {
-                       },
+                      showPasswordDialog(context, nameController, emailController, passwordController);
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -167,6 +176,10 @@ class _Screen5State extends State<Screen5> {
                       maximumSize: Size(500, 50),
                     ),
                     onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const NotificationsModalBottomSheet(),
+                      );
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -226,6 +239,7 @@ class _Screen5State extends State<Screen5> {
                         maximumSize: Size(500, 50),
                       ),
                       onPressed: () {
+                        showDeleteAccountConfirmationDialog(context);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
