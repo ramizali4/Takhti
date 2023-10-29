@@ -55,7 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
           activeColorPrimary: AppColorsDark.primaryBlack,
           inactiveColorPrimary: AppColorsDark.primaryBlack,
           onPressed: (context){
-
           },
         ),
         PersistentBottomNavBarItem(
