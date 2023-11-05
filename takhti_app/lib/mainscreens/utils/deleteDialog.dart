@@ -15,6 +15,7 @@ void showDeleteAccountConfirmationDialog(BuildContext context) {
         ),
         TextButton(
           onPressed: () async {
+            Navigator.of(context).pop();
           },
           child: Text('Delete'),
         ),

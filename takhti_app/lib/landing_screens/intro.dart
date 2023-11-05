@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:takhti_app/theme/text_theme.dart';
 import 'package:takhti_app/theme/color_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
 
@@ -13,10 +14,21 @@ class OnBoardingPage extends StatefulWidget {
 
 class OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
-  _onIntroEnd(context) async {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  // Future<void> setFirst() async {
+  //   final SharedPreferences prefs = await _prefs;
+  //   setState(() {
+  //      prefs.setBool('first_time', false).then((bool success) {
+  //       return print('done setting app shared pref');
+  //     });
+  //   });
+  // }
+   _onIntroEnd(context) async {
     // await setFirst();
-    Navigator.pushNamed(context, '/login');
+    Navigator.pushNamed(context, 'login');
   }
+
   Widget _buildImage(String assetName, [double width = 350]) {
     return Image.asset('assets/$assetName', width: width);
   }

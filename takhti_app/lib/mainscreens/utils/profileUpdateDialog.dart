@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../UserPref.dart';
 import '../../theme/color_theme.dart';
 import '../../theme/text_theme.dart';
 
@@ -67,12 +68,31 @@ void showProfileupdateDialog(BuildContext context, TextEditingController nameCon
             actions: [
               TextButton(
                 onPressed: () {
+                  nameController.text = user!.name;
+                  emailController.text = user!.email;
                   Navigator.of(bContext).pop();
                 },
                 child: Text('Cancel'),
               ),
               TextButton(
                 onPressed: () async {
+                  String name;
+                  String email;
+                  // Retrieve the values from the controllers
+                  name = nameController.text;
+                  email = emailController.text;
+
+                  // Do something with the values, e.g., save to database
+                  if (name.isNotEmpty && email.isNotEmpty) {
+
+                  }
+                  else {
+                    SnackBar snackBar = SnackBar(content: Text(
+                      'Please fill all the fields!', style: tt.snackbarText,),
+                      backgroundColor: Colors.redAccent,);
+                    ScaffoldMessenger.of(bContext).showSnackBar(snackBar);
+                  }
+
                   // Close the dialog
                   Navigator.of(bContext).pop();
                 },

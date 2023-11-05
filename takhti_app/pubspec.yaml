@@ -41,6 +41,7 @@ dependencies:
   http: ^1.1.0
   persistent_bottom_nav_bar: ^5.0.2
   animated_expandable_fab: ^0.0.3
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

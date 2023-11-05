@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:takhti_app/theme/color_theme.dart';
 import 'package:takhti_app/theme/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../core/models/user.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

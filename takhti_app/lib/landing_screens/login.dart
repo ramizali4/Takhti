@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../theme/color_theme.dart';
 import '../theme/text_theme.dart';
 
@@ -20,6 +22,30 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+    _loadRememberMe();
+  }
+
+  _loadRememberMe() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _rememberMe = prefs.getBool('rememberMe') ?? false;
+      if (_rememberMe) {
+        _emailController.text = prefs.getString('email') ?? '';
+        _passwordController.text = prefs.getString('password') ?? '';
+      }
+    });
+  }
+
+  _saveRememberMe() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('rememberMe', _rememberMe);
+    if (_rememberMe) {
+      prefs.setString('email', _emailController.text.trim());
+      prefs.setString('password', _passwordController.text.trim());
+    } else {
+      prefs.remove('email');
+      prefs.remove('password');
+    }
   }
 
 
@@ -98,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         return;
                       }
+                      _saveRememberMe(); // Save remember me preference
                     },
                     child: Text('Login', style: tt.introBody,),
                   ),

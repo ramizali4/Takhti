@@ -5,6 +5,7 @@ import 'package:takhti_app/mainscreens/utils/profileUpdateDialog.dart';
 import 'package:takhti_app/mainscreens/utils/updatePasswordDialog.dart';
 import '../theme/text_theme.dart';
 import '../theme/color_theme.dart';
+import '../UserPref.dart';
 
 class Screen5 extends StatefulWidget {
   final BuildContext bCnt;
@@ -33,10 +34,10 @@ class _Screen5State extends State<Screen5> {
   @override
   Widget build(BuildContext context) {
     scr = MediaQuery.of(context).size.width;
-    nameController.text = " ";
-    nC.text = "user";
-    emailController.text = "test@email.com";
-    passwordController.text = " ";
+    nameController.text = user!.name;
+    nC.text = user!.name;
+    emailController.text = user!.email;
+    passwordController.text = user!.password;
     return Scaffold(
       backgroundColor: AppColorsLight.bgColor,
       body: Padding(
@@ -70,7 +71,7 @@ class _Screen5State extends State<Screen5> {
                               style: tt.titleLargeBG
                           ),
                           Text(
-                              emailController.text,
+                              user!.email,
                               style: tt.bodyBG
                           ),
                         ],
@@ -98,6 +99,7 @@ class _Screen5State extends State<Screen5> {
                       showProfileupdateDialog(context,nameController, emailController, passwordController);
                       //refresh the screen
                       setState(() {
+                        nC.text = user!.name;
                       });
                     },
                     child: Row(

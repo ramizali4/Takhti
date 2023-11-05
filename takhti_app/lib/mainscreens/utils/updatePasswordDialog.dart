@@ -75,6 +75,40 @@ void showPasswordDialog(BuildContext context, TextEditingController nameControll
           ),
           TextButton(
             onPressed: () {
+              bool toClose = false;
+              if(newPassController.text.isNotEmpty && confirmPassController.text.isNotEmpty && oldPassController.text.isNotEmpty) {
+                if (newPassController.text == confirmPassController.text) {
+                  if (newPassController.text != oldPassController.text) {
+
+                  } else {
+                    SnackBar snackBar = SnackBar(
+                      content: Text('New password can\'t be same as Current password',
+                        style: tt.snackbarText,),
+                      backgroundColor: Colors.redAccent,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                } else {
+                  SnackBar snackBar = SnackBar(
+                    content: Text(
+                      'Passwords do not match', style: tt.snackbarText,),
+                    backgroundColor: Colors.redAccent,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              }
+              else{
+                SnackBar snackBar = SnackBar(
+                  content: Text(
+                    'Please fill all the fields', style: tt.snackbarText,),
+                  backgroundColor: Colors.redAccent,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+              // Close the dialog
+              if (toClose){
+                Navigator.of(context).pop();
+              }
             },
             child: Text('Update'),
           ),
