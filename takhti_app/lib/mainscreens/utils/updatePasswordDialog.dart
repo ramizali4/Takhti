@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:takhti_app/core/util/authUser.dart';
+import '../../core/util/updateUser.dart';
 import '../../theme/color_theme.dart';
 import '../../theme/text_theme.dart';
 
@@ -79,7 +81,16 @@ void showPasswordDialog(BuildContext context, TextEditingController nameControll
               if(newPassController.text.isNotEmpty && confirmPassController.text.isNotEmpty && oldPassController.text.isNotEmpty) {
                 if (newPassController.text == confirmPassController.text) {
                   if (newPassController.text != oldPassController.text) {
-
+                    if(authenticateUser(context, emailController, oldPassController)){
+                      updateUser(context, nameController, emailController, newPassController);
+                      toClose = true;
+                    } else {
+                      SnackBar snackBar = SnackBar(
+                        content: Text('Sorry! We could not authenticate you with the provided current password.', style: tt.snackbarText,),
+                        backgroundColor: Colors.redAccent,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   } else {
                     SnackBar snackBar = SnackBar(
                       content: Text('New password can\'t be same as Current password',

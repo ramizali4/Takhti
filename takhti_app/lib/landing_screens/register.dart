@@ -5,7 +5,10 @@ import 'package:takhti_app/theme/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../core/apis/conn_api.dart';
 import '../core/models/user.dart';
+import '../core/util/checkEmail.dart';
+import '../core/util/registerUser.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -98,7 +101,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                          && _confirmPasswordController.text.isNotEmpty
                          && _nameController.text.isNotEmpty
                          && _emailController.text.isNotEmpty){
-
+                        bool isEmailAvailable = await checkEmail(context, _emailController);
+                        if(isEmailAvailable) {
+                          registerUser(context,_nameController,_emailController,_passwordController,_confirmPasswordController);
+                        }
+                        else{
+                          print('error state');
+                        }
                       }
                       else{
                         if(_passwordController.text!= _confirmPasswordController.text) {

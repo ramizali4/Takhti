@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../UserPref.dart';
+import '../../core/util/checkEmail.dart';
+import '../../core/util/updateUser.dart';
 import '../../theme/color_theme.dart';
 import '../../theme/text_theme.dart';
 
@@ -84,7 +86,26 @@ void showProfileupdateDialog(BuildContext context, TextEditingController nameCon
 
                   // Do something with the values, e.g., save to database
                   if (name.isNotEmpty && email.isNotEmpty) {
-
+                    isUpdating = true;
+                    if (name != user!.name && email == user!.email) {
+                        await updateUser(bContext,nameController, emailController, passwordController).then((value) {
+                          user!.name = nameController.text;
+                        });
+                    } else if (name == user!.name && email != user!.email) {
+                      if(checkEmail(bContext, emailController) == false) {
+                        await updateUser(bContext,nameController, emailController, passwordController).then((value) {
+                          user!.email = emailController.text;
+                        });
+                      }
+                    } else if (name != user!.name && email != user!.email) {
+                      if(checkEmail(bContext, emailController) == false) {
+                        await updateUser(bContext,nameController, emailController, passwordController).then((value) {
+                          user!.name = nameController.text;
+                          user!.email = emailController.text;
+                        });
+                      }
+                    }
+                    isUpdating = false;
                   }
                   else {
                     SnackBar snackBar = SnackBar(content: Text(

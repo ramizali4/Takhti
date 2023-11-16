@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/util/deleteUser.dart';
 
 void showDeleteAccountConfirmationDialog(BuildContext context) {
   showDialog(
@@ -15,6 +16,7 @@ void showDeleteAccountConfirmationDialog(BuildContext context) {
         ),
         TextButton(
           onPressed: () async {
+            await deleteUser(bContext);
             Navigator.of(context).pop();
           },
           child: Text('Delete'),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../core/util/loginUser.dart';
 import '../theme/color_theme.dart';
 import '../theme/text_theme.dart';
 
@@ -125,6 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         return;
                       }
                       _saveRememberMe(); // Save remember me preference
+                      loginUser(context, _emailController, _passwordController);
                     },
                     child: Text('Login', style: tt.introBody,),
                   ),
