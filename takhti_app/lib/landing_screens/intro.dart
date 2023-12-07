@@ -16,17 +16,17 @@ class OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  // Future<void> setFirst() async {
-  //   final SharedPreferences prefs = await _prefs;
-  //   setState(() {
-  //      prefs.setBool('first_time', false).then((bool success) {
-  //       return print('done setting app shared pref');
-  //     });
-  //   });
-  // }
+  Future<void> setFirst() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+       prefs.setBool('first_time', false).then((bool success) {
+        return print('done setting app shared pref');
+      });
+    });
+  }
    _onIntroEnd(context) async {
     // await setFirst();
-    Navigator.pushNamed(context, 'login');
+    Navigator.pushNamed(context, '/login');
   }
 
   Widget _buildImage(String assetName, [double width = 350]) {

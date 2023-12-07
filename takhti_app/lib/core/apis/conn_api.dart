@@ -1,6 +1,6 @@
 class API
 {
-  static const hostconnect = "https://9bac-111-68-102-25.ngrok-free.app/apis";
+  static const hostconnect = "https://cyber-vault.xyz/apis";
   static const hostconnectUser = "$hostconnect/user";
   static const signup = "$hostconnect/user/signup.php";
   static const signin = "$hostconnect/user/login.php";

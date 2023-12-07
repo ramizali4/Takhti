@@ -14,10 +14,10 @@ void showPasswordDialog(BuildContext context, TextEditingController nameControll
       return AlertDialog(
         title: Text('Change your Password', style: tt.bold),
         content: Container(
-          height: 300,
+          height: MediaQuery.of(context).size.height >= 500 ? 400 : MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width >= 500 ? 500 : MediaQuery.of(context).size.width,
           constraints: BoxConstraints(
-            maxHeight: 300,
+            maxHeight: 500,
             maxWidth: MediaQuery
                 .of(context)
                 .size

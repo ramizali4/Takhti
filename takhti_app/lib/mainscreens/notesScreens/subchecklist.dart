@@ -43,63 +43,66 @@ class _DynamicSubChecklistState extends State<DynamicSubChecklist> {
       backgroundColor: AppColorsLight.bgColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [Row(
-            children: [
-              IconButton(onPressed: ()=>Navigator.pop(context), icon: Icon(Icons.arrow_back_ios,color: AppColorsDark.primaryBlack,)),
-              Container(
-                width: MediaQuery.of(context).size.width-80,
-                child: TextField(
-                  textAlign: TextAlign.start,
-                  style: tt.titleLarge,
-                  controller: _titleController,
-                  decoration: InputDecoration(
-                    hintText: 'Title',
-                    hintStyle: tt.titleLarge,
-                    border: InputBorder.none,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [Row(
+              children: [
+                IconButton(onPressed: ()=>Navigator.pop(context), icon: Icon(Icons.arrow_back_ios,color: AppColorsDark.primaryBlack,)),
+                Container(
+                  width: MediaQuery.of(context).size.width-80,
+                  child: TextField(
+                    textAlign: TextAlign.start,
+                    style: tt.titleLarge,
+                    controller: _titleController,
+                    decoration: InputDecoration(
+                      hintText: 'Title',
+                      hintStyle: tt.titleLarge,
+                      border: InputBorder.none,
+                    ),
                   ),
+                ),
+              ],
+            ),
+              Divider(
+                height: 30,
+                thickness: 2,
+                indent: 0,
+                endIndent: 0,
+                color: Colors.grey.shade300,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.8,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        scrollDirection: Axis.vertical,
+                        children: [
+                          for (final checklistItem in _checklistItems)
+                            _buildChecklistItem(checklistItem),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 125,
+                      child: TextButton(
+                        onPressed: _addChecklistItem,
+                        child:  Row(
+                          children: [
+                            const Icon(Icons.add,color: AppColorsDark.primaryBlack,),
+                            Text('Add Item',style: tt.underlined,),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-            Divider(
-              height: 30,
-              thickness: 2,
-              indent: 0,
-              endIndent: 0,
-              color: Colors.grey.shade300,
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        for (final checklistItem in _checklistItems)
-                          _buildChecklistItem(checklistItem),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 125,
-                    child: TextButton(
-                      onPressed: _addChecklistItem,
-                      child:  Row(
-                        children: [
-                          const Icon(Icons.add,color: AppColorsDark.primaryBlack,),
-                          Text('Add Item',style: tt.underlined,),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
       ),
     );

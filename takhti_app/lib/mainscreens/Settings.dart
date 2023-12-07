@@ -41,7 +41,7 @@ class _Screen5State extends State<Screen5> {
     return Scaffold(
       backgroundColor: AppColorsLight.bgColor,
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(25.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(

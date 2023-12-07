@@ -19,7 +19,7 @@ void showProfileupdateDialog(BuildContext context, TextEditingController nameCon
           return AlertDialog(
             title: Text('Enter Details', style: tt.bold),
             content: Container(
-              height: 200,
+              height: MediaQuery.of(context).size.height >= 500 ? 300 : MediaQuery.of(context).size.height,
               width: MediaQuery
                   .of(context)
                   .size
@@ -28,7 +28,7 @@ void showProfileupdateDialog(BuildContext context, TextEditingController nameCon
                   .size
                   .width,
               constraints: BoxConstraints(
-                maxHeight: 200,
+                maxHeight: 400,
                 maxWidth: MediaQuery
                     .of(context)
                     .size

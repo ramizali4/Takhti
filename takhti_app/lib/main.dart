@@ -57,9 +57,9 @@ class App extends StatelessWidget {
                 '/login': (context) => const LoginScreen(),
                 '/register': (context) => const RegisterScreen(),
                 '/my_home_page': (context) => MyHomePage(),
-                '/newNote': (context) => Note(),
-                '/newChecklist': (context) => DynamicChecklist(),
-                '/newSubChecklist': (context) => DynamicSubChecklist(),
+                '/editNote': (context) => NotePage(noteId: null,),
+                '/editChecklist': (context) => DynamicChecklist(),
+                '/editSubChecklist': (context) => DynamicSubChecklist(),
               },
             ),
           );

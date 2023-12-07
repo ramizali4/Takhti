@@ -17,7 +17,7 @@ class _Screen4State extends State<Screen4> {
     return Scaffold(
       backgroundColor: AppColorsLight.bgColor,
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(25.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -42,7 +42,7 @@ class _Screen4State extends State<Screen4> {
                               constraints: const BoxConstraints(
                                 maxWidth: 800,
                               ),
-                              width: MediaQuery.of(context).size.width-80,
+                              width: MediaQuery.of(context).size.width-100,
                               child: TextField(
                                 controller: _searchController,
                                 decoration: InputDecoration(
