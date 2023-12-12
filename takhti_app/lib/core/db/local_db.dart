@@ -37,6 +37,7 @@ CREATE TABLE $tableNotes (
   ${NoteFields.title} $textType,
   ${NoteFields.description} $textType,
   ${NoteFields.time} $textType,
+  ${NoteFields.category} $textType,
   ${NoteFields.userId} $integerType
   )
 ''');

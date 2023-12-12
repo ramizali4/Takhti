@@ -24,6 +24,7 @@ class AppColorsDark {
   static const greyColor = Color.fromRGBO(134, 151, 161, 1);
   static const primaryBlack = Color.fromRGBO(16, 15, 13, 1);
   static const primaryGold = Color.fromRGBO(222, 220, 82, 1);
+  static const primaryPurple = Color.fromRGBO(72, 52, 99, 1);
 }
 
 class AppColorsLight {
