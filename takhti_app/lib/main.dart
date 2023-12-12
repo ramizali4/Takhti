@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,12 +10,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takhti_app/mainscreens/notesScreens/simpleNote.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'firebase_options.dart';
 import 'mainscreens/notesScreens/checklist.dart';
 import 'mainscreens/notesScreens/subchecklist.dart';
 
-void main() {
-
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(App());
 }
 
@@ -51,13 +53,16 @@ class App extends StatelessWidget {
               title: 'Introduction screen',
               debugShowCheckedModeBanner: false,
               // initialRoute: '/newNote',
-              initialRoute: snapshot.data ?? '/login', // default to 'login' if null
+              initialRoute:
+                  snapshot.data ?? '/login', // default to 'login' if null
               routes: {
                 '/welcome': (context) => const OnBoardingPage(),
                 '/login': (context) => const LoginScreen(),
                 '/register': (context) => const RegisterScreen(),
                 '/my_home_page': (context) => MyHomePage(),
-                '/editNote': (context) => NotePage(noteId: null,),
+                '/editNote': (context) => NotePage(
+                      noteId: null,
+                    ),
                 '/editChecklist': (context) => DynamicChecklist(),
                 '/editSubChecklist': (context) => DynamicSubChecklist(),
               },

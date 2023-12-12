@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "929662514832",
+    "project_id": "takhti-f5878",
+    "storage_bucket": "takhti-f5878.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929662514832:android:d73cae8d625858657d0a15",
+        "android_client_info": {
+          "package_name": "com.example.takhti_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929662514832-ivlbm05nd4umr8mstc105kj8ridgoq7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYGXbDp-7A5bnFcpW8jYymHgwiUUViNy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929662514832-ivlbm05nd4umr8mstc105kj8ridgoq7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

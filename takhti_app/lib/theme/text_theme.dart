@@ -1,7 +1,6 @@
 import 'package:takhti_app/theme/color_theme.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomTextTheme {
   final introTitle = const TextStyle(
     fontSize: 28.0,
@@ -103,6 +102,11 @@ class CustomTextTheme {
     fontFamily: 'Outfit',
     color: Colors.white,
   );
+  final SignInGT = const TextStyle(
+    fontSize: 12,
+    fontFamily: 'Outfit',
+    color: AppColorsDark.primaryBlack,
+  );
   final bodyText1 = const TextStyle(
     fontSize: 16,
     fontFamily: 'Outfit',
@@ -116,10 +120,7 @@ class CustomTextTheme {
     fontFamily: 'Outfit',
   );
   final captionLink = const TextStyle(
-      fontSize: 12,
-      fontFamily: 'Outfit',
-      color: AppColorsDark.appBarColor
-  );
+      fontSize: 12, fontFamily: 'Outfit', color: AppColorsDark.appBarColor);
   final bold = const TextStyle(
     fontFamily: 'Outfit',
     fontWeight: FontWeight.w500,
