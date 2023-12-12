@@ -11,6 +11,7 @@ class NoteFields {
   static final String title = 'title';
   static final String description = 'description';
   static final String time = 'time';
+  static final String category = 'category';
   static final String userId = 'userId';
 }
 
@@ -20,14 +21,16 @@ class Note {
   final String title;
   final String description;
   final DateTime createdTime;
+  final String category;
   final int userId;
 
-   Note({
+  Note({
     this.id,
     required this.isDeleted,
     required this.title,
     required this.description,
     required this.createdTime,
+    this.category = "Interesting Idea",
     required this.userId,
   });
 
@@ -37,6 +40,7 @@ class Note {
     String? title,
     String? description,
     DateTime? createdTime,
+    String? category,
     int? userId,
   }) =>
       Note(
@@ -45,24 +49,27 @@ class Note {
         title: title ?? this.title,
         description: description ?? this.description,
         createdTime: createdTime ?? this.createdTime,
+        category: category ?? this.category,
         userId: userId ?? this.userId,
       );
 
   static Note fromJson(Map<String, Object?> json) => Note(
-    id: json[NoteFields.id] as int?,
-    isDeleted: json[NoteFields.isDeleted] == 1,
-    title: json[NoteFields.title] as String,
-    description: json[NoteFields.description] as String,
-    createdTime: DateTime.parse(json[NoteFields.time] as String),
-    userId: json[NoteFields.userId] as int,
-  );
+        id: json[NoteFields.id] as int?,
+        isDeleted: json[NoteFields.isDeleted] == 1,
+        title: json[NoteFields.title] as String,
+        description: json[NoteFields.description] as String,
+        createdTime: DateTime.parse(json[NoteFields.time] as String),
+        category: json[NoteFields.category] as String,
+        userId: json[NoteFields.userId] as int,
+      );
 
   Map<String, Object?> toJson() => {
-    NoteFields.id: id,
-    NoteFields.title: title,
-    NoteFields.isDeleted: isDeleted ? 1 : 0,
-    NoteFields.description: description,
-    NoteFields.time: createdTime.toIso8601String(),
-    NoteFields.userId: userId,
-  };
+        NoteFields.id: id,
+        NoteFields.title: title,
+        NoteFields.isDeleted: isDeleted ? 1 : 0,
+        NoteFields.description: description,
+        NoteFields.time: createdTime.toIso8601String(),
+        NoteFields.category: category,
+        NoteFields.userId: userId,
+      };
 }
