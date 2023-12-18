@@ -44,13 +44,11 @@ class _Screen1State extends State<Screen1> {
     scr = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColorsLight.bgColor,
-      body: Center(
-        child: isLoading
-            ? const CircularProgressIndicator()
-            : notes.isEmpty
-                ? noNotes()
-                : buildNotes(),
-      ),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : notes.isEmpty
+              ? Center(child: noNotes())
+              : buildNotes(),
     );
   }
 
@@ -82,56 +80,56 @@ class _Screen1State extends State<Screen1> {
           ),
         ),
       );
-  // Widget buildNotes() => StaggeredGrid.count(
-  //   // itemCount: notes.length,
-  //   // staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-  //     crossAxisCount: 2,
-  //     mainAxisSpacing: 2,
-  //     crossAxisSpacing: 2,
-  //     children: List.generate(
-  //       notes.length,
+  Widget buildNotes() => StaggeredGrid.count(
+      // itemCount: notes.length,
+      // staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+      crossAxisCount: 2,
+      mainAxisSpacing: 2,
+      crossAxisSpacing: 2,
+      children: List.generate(
+        notes.length,
+        (index) {
+          final note = notes[index];
+
+          return StaggeredGridTile.fit(
+            crossAxisCellCount: 1,
+            child: GestureDetector(
+              onTap: () async {
+                await Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => NotePage(noteId: note!.id),
+                ));
+
+                refreshNotes();
+              },
+              child: NoteCardWidget(note: note, index: index),
+            ),
+          );
+        },
+      ));
+  // Widget buildNotes() => SingleChildScrollView(
+  //       child: Column(
+  //         children: List.generate(
+  //           notes.length,
   //           (index) {
-  //         final note = notes[index];
+  //             final note = notes[index];
   //
-  //         return StaggeredGridTile.fit(
-  //           crossAxisCellCount: 1,
-  //           child: GestureDetector(
-  //             onTap: () async {
-  //               await Navigator.of(context).push(MaterialPageRoute(
-  //                 builder: (context) => NotePage(noteId: note.id!),
-  //               ));
+  //             return Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: GestureDetector(
+  //                 onTap: () async {
+  //                   await Navigator.of(context).push(MaterialPageRoute(
+  //                     builder: (context) => NotePage(noteId: note.id!),
+  //                   ));
   //
-  //               refreshNotes();
-  //             },
-  //             child: NoteCardWidget(note: note, index: index),
-  //           ),
-  //         );
-  //       },
-  //     ));
-  Widget buildNotes() => SingleChildScrollView(
-        child: Column(
-          children: List.generate(
-            notes.length,
-            (index) {
-              final note = notes[index];
-
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () async {
-                    await Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => NotePage(noteId: note.id!),
-                    ));
-
-                    refreshNotes();
-                  },
-                  child: NoteCardWidget(note: note, index: index),
-                ),
-              );
-            },
-          ),
-        ),
-      );
+  //                   refreshNotes();
+  //                 },
+  //                 child: NoteCardWidget(note: note, index: index),
+  //               ),
+  //             );
+  //           },
+  //         ),
+  //       ),
+  //     );
 
 // Widget buildNotes() => StaggeredGridView.countBuilder(
 //       padding: const EdgeInsets.all(8),

@@ -184,17 +184,6 @@ class NoteCardWidget extends StatelessWidget {
 
   /// To return different height for different widgets
   double getMinHeight(int index) {
-    switch (index % 4) {
-      case 0:
-        return 100;
-      case 1:
-        return 150;
-      case 2:
-        return 150;
-      case 3:
-        return 100;
-      default:
-        return 100;
-    }
+    return 100;
   }
 }
