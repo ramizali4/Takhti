@@ -1,6 +1,6 @@
 {
-    "name": "takhti_app",
-    "short_name": "takhti_app",
+    "name": "Takhti",
+    "short_name": "Takhti",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

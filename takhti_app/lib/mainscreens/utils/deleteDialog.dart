@@ -6,7 +6,8 @@ void showDeleteAccountConfirmationDialog(BuildContext context) {
     context: context,
     builder: (BuildContext bContext) => AlertDialog(
       title: Text('Delete Account'),
-      content: Text('Are you sure you want to delete your account? This action cannot be undone.'),
+      content: Text(
+          'Are you sure you want to delete your account? This action cannot be undone.'),
       actions: [
         TextButton(
           onPressed: () {
@@ -18,6 +19,7 @@ void showDeleteAccountConfirmationDialog(BuildContext context) {
           onPressed: () async {
             await deleteUser(bContext);
             Navigator.of(context).pop();
+            Navigator.pushNamed(context, '/login');
           },
           child: Text('Delete'),
         ),
