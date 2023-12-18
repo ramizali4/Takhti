@@ -49,6 +49,21 @@ dependencies:
   google_sign_in: ^6.2.0
   firebase_core: ^2.24.2
   firebase_auth: ^4.15.3
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  image_path: "icon/icon.png"
+  web:
+    generate: true
+    image_path: "icon/icon.png"
+  windows:
+    generate: true
+    image_path: "icon/icon.png"
+    icon_size: 256
+  macos:
+    generate: true
+    image_path: "icon/icon.png"
 
 dev_dependencies:
   flutter_test:
